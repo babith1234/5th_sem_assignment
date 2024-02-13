@@ -17,23 +17,40 @@ const createBlog = async (req, res) => {
     content,
   };
 
-  blogs.push(newBlog)
+  blogs.push(newBlog);
+
+  console.log(blogs);
 
   return res.status(201).json({
-    success:true,
-    message:"Blog created successfully"
-  })
+    success: true,
+    message: "Blog created successfully",
+  });
 };
 
-const getAllBlogs = async(req,res)=>{
-    return res.status(201).json({
-        success:true,
-        message:"all blogs retrieved successfully"
-    })
-}
+const getAllBlogs = async (req, res) => {
+  return res.status(201).json({
+    success: true,
+    message: "all blogs retrieved successfully",
+    data: blogs,
+  });
+};
 
-const getAuthorBlogs = async(req,res)=>{
-    const author_id = req.author_id
-}
+const author_blog = [];
 
-module.exports = {createBlog,getAllBlogs,getAuthorBlogs}
+const getAuthorBlogs = async (req, res) => {
+  const author_id = req.author_id;
+
+  for (const blog of blogs) {
+    if (author_id === blog.author_id) {
+      author_blog.push(blog);
+    }
+  }
+  console.log(author_blog);
+
+  return res.status(201).json({
+    success: true,
+    data: author_blog,
+  });
+};
+
+module.exports = { createBlog, getAllBlogs, getAuthorBlogs };

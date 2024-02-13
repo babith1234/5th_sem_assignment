@@ -6,7 +6,7 @@ const blogRouter = require('./routes/blogs')
 app.use(express.json()) 
 
 app.use('/api/authors',authorRouter)
-app.use('/api/blogs',blogRouter)
+app.use('/api/blog',blogRouter)
 
 
 app.listen(3000,()=>{
