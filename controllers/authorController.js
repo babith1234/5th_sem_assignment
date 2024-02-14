@@ -13,6 +13,7 @@ const registerAuthor = async (req, res) => {
   const newAuthor = {
     id: authors.length + 1,
     author_id,
+    author_email,
     author_name,
     author_password,
   };

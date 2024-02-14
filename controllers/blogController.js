@@ -24,27 +24,32 @@ const createBlog = async (req, res) => {
   return res.status(201).json({
     success: true,
     message: "Blog created successfully",
+    data: blogs,
   });
 };
 
 const getAllBlogs = async (req, res) => {
   return res.status(201).json({
     success: true,
-    message: "all blogs retrieved successfully",
+    message: "All blogs retrieved successfully",
     data: blogs,
   });
 };
 
-const author_blog = [];
-
 const getAuthorBlogs = async (req, res) => {
   const author_id = req.author_id;
 
+  const author_blog = [];
+
+  console.log(blogs);
+
   for (const blog of blogs) {
+    console.log("hello");
     if (author_id === blog.author_id) {
       author_blog.push(blog);
     }
   }
+
   console.log(author_blog);
 
   return res.status(201).json({

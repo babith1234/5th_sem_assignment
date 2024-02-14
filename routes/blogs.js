@@ -6,6 +6,6 @@ const router = express.Router()
 
 router.get('/blogs',blogController.getAllBlogs)
 router.post('/blogs',blogController.createBlog)
-router.get('/blogs/:id',checkAuthorId,blogController.getAuthorBlogs)
+router.get('/blogs/:id([0-9]+)',checkAuthorId,blogController.getAuthorBlogs)
 
 module.exports = router
